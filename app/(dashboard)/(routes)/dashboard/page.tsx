@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-export default function Home() {
+export default function DashbordPage() {
   return (
   
-    <Button size="lg"> Click ME </Button>
+<h1 className="tetx">dash boared (protected) </h1>
     
   );
 }
- 
+  
