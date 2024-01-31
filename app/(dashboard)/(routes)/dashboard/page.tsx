@@ -1,11 +1,28 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { Montserrat } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-export default function DashbordPage() {
+
+const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
+
+
+export default function DashbordPage()
+
+
+{
   return (
-  
-<h1 className="tetx">dash boared (protected) </h1>
     
+    <div>
+      <div className="mb-8 space-y-4">
+        <h2 className={cn("text-2xl md:text-4xl font-bold text-center ", montserrat.className)}>
+          Explore the Intelligence of AI{" "}
+        </h2>
+        <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
+          Where Intelligence Meets Synergy
+        </p>
+      </div>
+      <div>
+
+      </div>
+    </div>
   );
 }
-  
