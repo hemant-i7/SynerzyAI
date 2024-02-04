@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 import { tools } from "@/constants";
+import CustomCursor from "./CustomCursor";
 
 export default function HomePage() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="mb-8 space-y-4">
+      <CustomCursor/>
         <h2 className="text-2xl md:text-4xl font-bold text-center">
           Explore the power of AI
         </h2>

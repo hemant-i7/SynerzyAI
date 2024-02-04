@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 html, 
-body, 
+body {
+  cursor:none;
+}
 :root{
   height: 100%;
 }
