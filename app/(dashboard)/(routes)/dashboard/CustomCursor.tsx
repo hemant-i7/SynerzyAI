@@ -18,8 +18,6 @@ export default function CustomCursor() {
     <div
       className="fixed top-0 left-0 pointer-events-none z-50"
       style={{ left: position.x, top: position.y }}
-    >
-      <img src="/custom-cursor.png" />
-    </div>
+    ></div>
   );
 }
