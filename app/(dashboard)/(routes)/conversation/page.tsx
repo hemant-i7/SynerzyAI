@@ -31,8 +31,25 @@ const ConversionPage = () => {
         iconColor="text-violet-500"
         bgColor="bg-violet-500/10"
       />
-      
-      
+      <div className="px-4 lg:px-8">
+        <div>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="
+            rounded-lg
+            border
+            w-full
+            p-4
+            px-3
+            md:px-6
+            focus-within:shadow-sm
+            grid-cols-12
+            gap-2"
+            ></form>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };
