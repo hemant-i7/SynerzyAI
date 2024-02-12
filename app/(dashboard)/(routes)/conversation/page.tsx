@@ -7,6 +7,8 @@ import { Form, useForm } from "react-hook-form";
 import { formSchema } from "./contants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const ConversionPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,7 +48,7 @@ const ConversionPage = () => {
             focus-within:shadow-sm
             grid-cols-12
             gap-2"
-            ></form>
+            ><Textarea></Textarea></form>
           </Form>
         </div>
       </div>
