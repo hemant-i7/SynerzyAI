@@ -3,12 +3,12 @@
 import * as z from "zod";
 import { Heading } from "@/components/heading";
 import { MessageSquare } from "lucide-react";
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { formSchema } from "./contants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 const ConversionPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,7 +48,33 @@ const ConversionPage = () => {
             focus-within:shadow-sm
             grid-cols-12
             gap-2"
-            ><Textarea></Textarea></form>
+            >
+              <FormField
+                name="prompt"
+                render={({ field }) => (
+                  <FormItem className="col-span-12 lg:col-span-10">
+                    <FormControl className="m-0 p-0">
+                      <Input
+                        className="border-0 outline-none
+                               focus-visible:ring-0
+                               focus-visible:ring-transparent"
+                        disabled={isLoading}
+                        placeholder="how to convert cgpa into percentage ?"
+                        {...field}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <Button
+                className="col-span-12 lg:col-span-2 w-full"
+                type="submit"
+                disabled={isLoading}
+                size="icon"
+              >
+                Generate
+              </Button>
+            </form>
           </Form>
         </div>
       </div>
