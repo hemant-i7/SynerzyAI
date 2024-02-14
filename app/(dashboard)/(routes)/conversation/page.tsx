@@ -55,11 +55,9 @@ const ConversionPage = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none
-                               focus-visible:ring-0
-                               focus-visible:ring-transparent"
+                        className=" border-0 text-muted-foreground outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="how to convert cgpa into percentage ?"
+                        placeholder="eg. how to convert cgpa into percentage ?"
                         {...field}
                       />
                     </FormControl>
@@ -67,7 +65,7 @@ const ConversionPage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="p-5 col-span-12 lg:col-span-2 w-1000"
                 type="submit"
                 disabled={isLoading}
                 size="icon"
@@ -76,6 +74,7 @@ const ConversionPage = () => {
               </Button>
             </form>
           </Form>
+          <div className="space-y-4 mt-4">GPt KA contetnt</div>
         </div>
       </div>
     </div>
