@@ -59,7 +59,7 @@ const ConversionPage = () => {
                                focus-visible:ring-0
                                focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="how to convert cgpa into percentage ?"
+                        placeholder="eg. how to convert cgpa into percentage ?"
                         {...field}
                       />
                     </FormControl>
