@@ -11,7 +11,13 @@ export const tools = [
     bgColor: "bg-violet-500/10",
   },
  
-
+  {
+    label: 'Music Generation',
+    icon: Music,
+    href: '/music',
+    color: "text-emerald-500",
+    bgColor: "bg-emerald-500/10",
+  },
   {
     label: 'Image Generation',
     icon: ImageIcon,

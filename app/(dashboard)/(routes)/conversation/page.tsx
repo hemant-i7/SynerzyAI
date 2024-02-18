@@ -74,7 +74,7 @@ const ConversionPage = () => {
               </Button>
             </form>
           </Form>
-          <div className="space-y-4 mt-4">GPt KA contetnt</div>
+          <div className="space-y-4 mt-4">OUTPUT:</div>
         </div>
       </div>
     </div>
