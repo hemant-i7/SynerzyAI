@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
+require("dotenv").config();
 
 export const metadata: Metadata = {
   title: "SynerzyAI",
