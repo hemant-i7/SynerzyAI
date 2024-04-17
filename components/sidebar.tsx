@@ -47,13 +47,6 @@ const routes = [
     color: "text-emerald-500",
     href: "/music",
   },
-
-  {
-    label: "Settings",
-    icon: Settings,
-    href: "/settings",
-    color: "text-white-500",
-  },
 ];
 
 const Sidebar = () => {
