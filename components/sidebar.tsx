@@ -1,18 +1,16 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import {
-  Code,
   ImageIcon,
   LayoutDashboard,
   MessageSquare,
   Music,
-  Settings,
   VideoIcon,
 } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -80,6 +78,21 @@ const Sidebar = () => {
               </div>
             </Link>
           ))}
+        </div>
+        {/* Add GitHub and YouTube buttons */}
+        <div className="flex justify-between px-3 absolute bottom-4 left-0 right-0">
+          <Link href="https://github.com/hemant-i7/SynerzyAI" passHref>
+            <div className="text-white flex items-center cursor-pointer">
+              <Image src="/git.png" alt="GitHub" width={24} height={24} />
+              <span className="ml-2">GitHub</span>
+            </div>
+          </Link>
+          <Link href="https://youtu.be/kn3O5BG_yV0" passHref>
+            <div className="text-white flex items-center cursor-pointer">
+              <Image src="/yt.png" alt="YouTube" width={24} height={24} />
+              <span className="ml-2">YouTube</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
