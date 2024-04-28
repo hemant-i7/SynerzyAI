@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Montserrat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import {
+  File,
   ImageIcon,
   LayoutDashboard,
   MessageSquare,
@@ -21,12 +22,7 @@ const routes = [
     href: "/dashboard",
     color: "text-sky-500",
   },
-  {
-    label: "Conversation",
-    icon: MessageSquare,
-    href: "/conversation",
-    color: "text-pink-500",
-  },
+
   {
     label: "Image Generation",
     icon: ImageIcon,
@@ -42,6 +38,13 @@ const routes = [
   {
     label: "Music Generation",
     icon: Music,
+    color: "text-emerald-500",
+    href: "/music",
+  },
+
+  {
+    label: "PDF Generation",
+    icon: File,
     color: "text-emerald-500",
     href: "/music",
   },

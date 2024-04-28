@@ -104,10 +104,13 @@ const VideoPage = () => {
         )}
         {!video && !isLoading && <Empty label="No vidoe generated." />}
         {video && (
-         <video className="w-full aspect-video mt-8 rounded-lg bordrer bg-black" controls>
-          <source src={video} />
-
-         </video>
+          <video
+            className="w-full aspect-video mt-8 rounded-lg border bg-black"
+            controls
+            loop
+          >
+            <source src={video} />
+          </video>
         )}
       </div>
     </div>
