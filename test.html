@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Reveal Link</title>
+  <style>
+    .dld-container {
+      --box-color: #08102b;
+      --box-bg: #fffdfc;
+      --box-bg-alt: rgba(0, 0, 0, .08);
+      --font-family: inherit;
+      --svg-color: #fffdfc;
+      --button-bg: #482dff;
+    }
+    .darkMode .dld-container {
+      --box-color: #fffdfc;
+      --box-bg: #2d2d30;
+      --box-bg-alt: #252526;
+      --button-bg: #e91e63;
+    }
+    .dld-container {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      max-width: 480px;
+      margin: 30px 0;
+      color: var(--box-color);
+      font-family: var(--font-family);
+      transition: margin .6s;
+      -webkit-transition: margin .6s;
+    }
+    .dld-container svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+    .dld-box, .dld-image {
+      position: relative;
+      display: flex;
+    }
+    .dld-container svg.line {
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.2;
+    }
+    .dld-box {
+      z-index: 2;
+      background: var(--box-bg);
+      width: 100%;
+      padding: 15px;
+      flex-direction: row;
+      font-size: 14px;
+      border-radius: 10px;
+      box-shadow: 0 0 35px rgba(0, 0, 0, .09);
+    }
+    .dld-image {
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      padding: 10px;
+      margin-right: 15px;
+      background: var(--box-bg-alt);
+      border-radius: 6px;
+      transition: .4s;
+      -webkit-transition: .4s;
+    }
+    .dld-image[style*=background-image] {
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    }
+    .dld-image:not([style*=background-image])::before {
+      content: attr(data-placeholder);
+      opacity: .7;
+    }
+    svg.dld-svg {
+      width: calc(100% + 12px);
+      height: calc(100% + 12px);
+      position: absolute;
+      top: -6px;
+      bottom: -6px;
+      right: -6px;
+      left: -6px;
+      opacity: 0;
+      stroke-width: 1.5;
+      -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      transition: .5s;
+      -webkit-transition: .5s;
+    }
+    .dld-image[style*=background-image] .dld-svg {
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      top: -10px;
+      bottom: -10px;
+      right: -10px;
+      left: -10px;
+    }
+    .dld-svg .b {
+      fill: none;
+      stroke: var(--box-bg-alt);
+    }
+    .dld-svg .c {
+      fill: none;
+      stroke: var(--button-bg);
+      stroke-dasharray: 100 100;
+      stroke-dashoffset: 100;
+      stroke-linecap: round;
+      transition: .5s;
+      -webkit-transition: .5s;
+    }
+    .dld-info {
+      flex-grow: 1;
+      width: calc(100% - 115px);
+    }
+    .dld-info>* {
+      line-height: 20px;
+      font-size: 14px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dld-bottom, .dld-button {
+      position: absolute;
+      display: flex;
+    }
+    .dld-info>::before {
+      content: attr(data-name) ': ';
+      text-transform: capitalize;
+      opacity: .8;
+    }
+    .dld-info>::after {
+      content: attr(data-value);
+    }
+    .dld-button {
+      background: var(--button-bg);
+      width: 40px;
+      height: 40px;
+      bottom: -20px;
+      right: 20px;
+      outline: 0;
+      border: none;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, .09);
+      transition: .3s;
+      -webkit-transition: .3s;
+      cursor: pointer;
+    }
+    .dld-button:hover {
+      -webkit-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+      transform: scale(1.03);
+    }
+    .dld-button svg.line {
+      width: 24px;
+      height: 24px;
+      stroke: var(--svg-color);
+    }
+    .dld-download {
+      visibility: visible;
+      opacity: 1;
+    }
+    .dld-container.alt .dld-download, .dld-retry {
+      visibility: hidden;
+      opacity: 0;
+      bottom: -40px;
+    }
+    .dld-bottom {
+      z-index: 1;
+      bottom: 0;
+      right: 0;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      width: 100%;
+      padding-top: 20px;
+      font-size: 14px;
+      background: var(--box-bg);
+      border-radius: 0 0 10px 10px;
+      transition: .6s;
+      -webkit-transition: .6s;
+    }
+    .dld-bottom>* span {
+      color: var(--button-bg);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .dld-container.alt {
+      margin: 30px 0 70px;
+    }
+    .dld-container.alt .dld-image {
+      -webkit-transform: scale(.8);
+      -ms-transform: scale(.8);
+      transform: scale(.8);
+      border-radius: 50%;
+    }
+    .dld-container.alt .dld-svg {
+      opacity: 1;
+    }
+    .dld-container.retry .dld-retry {
+      visibility: visible;
+      opacity: 1;
+      bottom: -20px;
+    }
+    .dld-container.alt .dld-bottom {
+      bottom: -40px;
+      background: var(--box-bg-alt);
+      box-shadow: 0 0 35px rgba(0, 0, 0, .09);
+    }
+  </style>
+</head>
+<body>
+  <div class="download-box" data-link="https://drive.google.com/drive/folders/1H_YEL5-7PRtjc8UUnv6UR3ArRGbBo7hh" data-timeout="15" data-image="path/to/image.jpg" data-placeholder="IMG" data-info="Download File"></div>
+
+  <script type="module">
+    /*<![CDATA[*/
+    (({selector:a,messages:{startingDownload:b,pleaseWait:c,clickAgain:d}})=>{const e=a=>("string"==typeof a?a:a+"").replace(/&/g,"&amp;").replace(/'/g,"&#39;").replace(/"/g,"&#34;"),f=document.querySelectorAll(a);f.forEach(f=>{f.classList.add("dld-container"),f.innerHTML=`<div class='dld-box'><div class='dld-image'${f.dataset.image?` style='${e(`background-image: url(${f.dataset.image})`)}'`:""} data-placeholder='${f.dataset.placeholder||".ext"}'><svg class='dld-svg' viewBox='0 0 34 34'><circle class='b' cx='17' cy='17' r='15.92' /><circle class='c dld-progress' cx='17' cy='17' r='15.92' /></svg><img src="path/to/download-icon.png" alt="Download" style="width: 40px; height: 40px; position: absolute; top: 10px; left: 10px;"></div><div class='dld-info'>${(Object.keys(f.dataset).reduce((b,a)=>(["link","image","placeholder","target","timeout"].includes(a)||(!b&&(b=[]),b.push([a,f.dataset[a]])),b),null)||[["Info","No information provided"]]).map(([a,b])=>`<span data-name='${e(a)}' data-value='${e(b)}'></span>`).join("")}</div><button class='dld-button dld-download'><svg class='line' viewBox='0 0 24 24'><polyline points='8 17 12 21 16 17'/><line x1='12' x2='12' y1='12' y2='21'/><path d='M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29'/></svg><img src="path/to/download-icon.png" alt="Download" style="width: 24px; height: 24px;"></button><button class='dld-button dld-retry'><svg class='line' viewBox='0 0 24 24'><polyline points='23 4 23 10 17 10'/><path d='M20.49 15a9 9 0 1 1-2.12-9.36L23 10'/></svg></button></div><div class='dld-bottom'></div>`;const g=f.dataset.link||"#",h=f.dataset.target,[i,j,k,l]=[".dld-download",".dld-retry",".dld-bottom",".dld-progress"].map(a=>f.querySelector(a));i.addEventListener("click",()=>{f.classList.add("alt");let a=+(f.dataset.timeout||10);(Number.isNaN(a)||!Number.isFinite(a))&&(a=10);const d=a;k.innerHTML=`<span>${b.replace(/%d/g,a)}</span>`;const i=setInterval(()=>{a-=1,k.innerHTML=`<span>${b.replace(/%d/g,a)}</span>`,l.style.strokeDashoffset=Math.floor(100*(a/d));0>=a&&(clearInterval(i),k.innerHTML=c,h?window.open(g,h):window.location.href=g,j.onclick=()=>{h?window.open(g,h):window.location.href=g},setTimeout(()=>{f.classList.remove("alt"),f.classList.add("retry"),k.innerHTML=d},4e3))},1e3)})})})({
+      selector: ".download-box",
+      messages: {
+        startingDownload: "Starting Download in <span>%d</span> seconds",
+        pleaseWait: "Please wait...",
+        clickAgain: "Click the button again to download"
+      }
+    });
+    /*]]>*/
+  </script>
+</body>
+</html>
