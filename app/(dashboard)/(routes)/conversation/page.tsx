@@ -50,7 +50,6 @@ const ConversationPage = () => {
 
       form.reset();
     } catch (error: any) {
-      
     } finally {
       router.refresh();
     }
